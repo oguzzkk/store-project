@@ -48,6 +48,25 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
 .tag-victorian { background: #2d1f3d; color: #d4b8e8; }
 .tag-avant { background: #333; color: #e0e0e0; }
 
+/* Favorite button */
+.fav-btn {
+  position: absolute; top: 10px; right: 10px; cursor: pointer; z-index: 5;
+  font-size: 1.1em; line-height: 1; padding: 6px; border: none; background: rgba(255,255,255,0.9);
+  color: #ccc; transition: 0.2s; user-select: none; border-radius: 50%; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.fav-btn:hover { color: #e74c3c; transform: scale(1.15); }
+.fav-btn.active { color: #e74c3c; }
+.site-card.is-fav { border-color: #f5c6c6; background: #fff5f5; }
+.filter-btn.fav-filter { border-color: #e74c3c; color: #e74c3c; }
+.filter-btn.fav-filter:hover, .filter-btn.fav-filter.active { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+.sync-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.sync-status { font-size: 0.65em; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+.sync-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; }
+.sync-dot.green { background: #2ecc71; }
+.sync-dot.orange { background: #f39c12; }
+.fav-count-badge { font-size: 0.65em; background: #e74c3c; color: #fff; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+
 .note { text-align: center; padding: 40px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; margin-top: 32px; }
 
 @media (max-width: 600px) {
@@ -76,9 +95,13 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
   <button class="filter-btn" onclick="filterCards('dark')">Dark / Gothic</button>
   <button class="filter-btn" onclick="filterCards('victorian')">Victorian</button>
   <button class="filter-btn" onclick="filterCards('avant')">Avant-Garde</button>
+  <button class="filter-btn fav-filter" onclick="filterFavorites()">&#9829; Favorites <span id="favBadge" class="fav-count-badge" style="display:none">0</span></button>
 </div>
 
-<div class="count" id="count">Showing 85 sites</div>
+<div class="sync-bar">
+  <div class="count" id="count">Showing 85 sites</div>
+  <div class="sync-status" id="syncStatus"><span class="sync-dot orange"></span> Connecting...</div>
+</div>
 
 <div class="site-grid" id="grid">
 
@@ -696,7 +719,73 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
 </div>
 
 <script>
+// ===== SHARED FAVORITES SYSTEM =====
+// Uses jsonblob.com for free shared storage (no signup needed)
+// Favorites sync between anyone who has the same link
+
+let BLOB_ID = null;
+let favorites = {};
+let currentFilter = 'all';
+
+// --- Init: add heart buttons to all cards ---
+function initHearts() {
+  document.querySelectorAll('.site-card').forEach(card => {
+    const brand = card.querySelector('.brand').textContent.trim();
+    card.dataset.brand = brand;
+    const btn = document.createElement('button');
+    btn.className = 'fav-btn';
+    btn.innerHTML = '&#9825;';
+    btn.title = 'Add to favorites';
+    btn.onclick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleFav(brand);
+    };
+    card.appendChild(btn);
+  });
+}
+
+// --- Toggle favorite ---
+function toggleFav(brand) {
+  if (favorites[brand]) {
+    delete favorites[brand];
+  } else {
+    favorites[brand] = Date.now();
+  }
+  renderHearts();
+  saveFavorites();
+}
+
+// --- Render heart states ---
+function renderHearts() {
+  document.querySelectorAll('.site-card').forEach(card => {
+    const brand = card.dataset.brand;
+    const btn = card.querySelector('.fav-btn');
+    if (favorites[brand]) {
+      btn.classList.add('active');
+      btn.innerHTML = '&#9829;';
+      btn.title = 'Remove from favorites';
+      card.classList.add('is-fav');
+    } else {
+      btn.classList.remove('active');
+      btn.innerHTML = '&#9825;';
+      btn.title = 'Add to favorites';
+      card.classList.remove('is-fav');
+    }
+  });
+  const favCount = Object.keys(favorites).length;
+  const badge = document.getElementById('favBadge');
+  if (favCount > 0) {
+    badge.style.display = 'inline';
+    badge.textContent = favCount;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+// --- Filter: regular tags ---
 function filterCards(tag) {
+  currentFilter = tag;
   const cards = document.querySelectorAll('.site-card');
   const btns = document.querySelectorAll('.filter-btn');
   let count = 0;
@@ -710,8 +799,122 @@ function filterCards(tag) {
       card.style.display = 'none';
     }
   });
-  document.getElementById('count').textContent = `Showing ${count} sites`;
+  document.getElementById('count').textContent = 'Showing ' + count + ' sites';
 }
+
+// --- Filter: favorites only ---
+function filterFavorites() {
+  currentFilter = 'favorites';
+  const cards = document.querySelectorAll('.site-card');
+  const btns = document.querySelectorAll('.filter-btn');
+  let count = 0;
+  btns.forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  cards.forEach(card => {
+    if (favorites[card.dataset.brand]) {
+      card.style.display = 'block';
+      count++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  document.getElementById('count').textContent = 'Showing ' + count + ' favorites';
+}
+
+// --- Sync: save favorites to jsonblob ---
+async function saveFavorites() {
+  if (!BLOB_ID) return;
+  try {
+    await fetch('https://jsonblob.com/api/jsonBlob/' + BLOB_ID, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(favorites)
+    });
+    showSync('green', 'Saved');
+  } catch(e) {
+    showSync('orange', 'Save failed - stored locally');
+    localStorage.setItem('store-project-favs', JSON.stringify(favorites));
+  }
+}
+
+// --- Sync: load favorites from jsonblob ---
+async function loadFavorites() {
+  try {
+    const res = await fetch('https://jsonblob.com/api/jsonBlob/' + BLOB_ID);
+    if (res.ok) {
+      favorites = await res.json();
+      renderHearts();
+      showSync('green', 'Synced');
+    }
+  } catch(e) {
+    const local = localStorage.getItem('store-project-favs');
+    if (local) favorites = JSON.parse(local);
+    renderHearts();
+    showSync('orange', 'Offline - using local');
+  }
+}
+
+// --- Sync: create new blob ---
+async function createBlob() {
+  try {
+    const res = await fetch('https://jsonblob.com/api/jsonBlob', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
+    });
+    const loc = res.headers.get('Location') || res.headers.get('location');
+    if (loc) {
+      BLOB_ID = loc.split('/').pop();
+      window.location.hash = 'shared=' + BLOB_ID;
+      showSync('green', 'Ready - share this URL!');
+    }
+  } catch(e) {
+    showSync('orange', 'Offline mode');
+  }
+}
+
+// --- UI helpers ---
+function showSync(color, text) {
+  document.getElementById('syncStatus').innerHTML =
+    '<span class="sync-dot ' + color + '"></span> ' + text;
+}
+
+// --- Init on page load ---
+window.addEventListener('DOMContentLoaded', async function() {
+  initHearts();
+
+  // Check URL for shared blob ID
+  const hash = window.location.hash;
+  const match = hash.match(/shared=([a-f0-9-]+)/i);
+
+  if (match) {
+    BLOB_ID = match[1];
+    await loadFavorites();
+  } else {
+    // Create new shared blob
+    await createBlob();
+  }
+
+  // Auto-refresh favorites every 15 seconds (to see partner's changes)
+  setInterval(async function() {
+    if (BLOB_ID) {
+      try {
+        const res = await fetch('https://jsonblob.com/api/jsonBlob/' + BLOB_ID);
+        if (res.ok) {
+          const remote = await res.json();
+          const localStr = JSON.stringify(favorites);
+          const remoteStr = JSON.stringify(remote);
+          if (localStr !== remoteStr) {
+            favorites = remote;
+            renderHearts();
+            showSync('green', 'Updated from partner');
+            setTimeout(function() { showSync('green', 'Synced'); }, 2000);
+          }
+        }
+      } catch(e) {}
+    }
+  }, 15000);
+});
 </script>
 </body>
 </html>
