@@ -1917,7 +1917,7 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
 // Favoriler ve notlar otomatik senkronize olur
 
 const API_URL = 'https://api.npoint.io/9f430671be24a9b78c70';
-const TRASH_API_URL = 'https://api.npoint.io/a1b2c3d4e5f6trash01';
+const TRASH_API_URL = 'https://api.npoint.io/8058a715b26b78972bd2';
 let favorites = {};
 let trashed = {};
 let currentFilter = 'all';
@@ -2168,16 +2168,38 @@ async function saveFavorites() {
   }
 }
 
-// --- Sync: save trash to localStorage (trash is local-only for now) ---
-function saveTrash() {
-  localStorage.setItem('store-project-trash', JSON.stringify(trashed));
+// --- Sync: save trash to npoint.io ---
+async function saveTrash() {
+  try {
+    await fetch(TRASH_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trashed)
+    });
+    localStorage.setItem('store-project-trash', JSON.stringify(trashed));
+    showSync('green', 'Kaydedildi');
+  } catch(e) {
+    localStorage.setItem('store-project-trash', JSON.stringify(trashed));
+    showSync('orange', 'Yerel olarak kaydedildi');
+  }
 }
 
-// --- Load trash from localStorage ---
-function loadTrash() {
-  const local = localStorage.getItem('store-project-trash');
-  if (local) {
-    try { trashed = JSON.parse(local); } catch(e) { trashed = {}; }
+// --- Sync: load trash from npoint.io ---
+async function loadTrash() {
+  try {
+    const res = await fetch(TRASH_API_URL);
+    if (res.ok) {
+      const remote = await res.json();
+      if (remote && typeof remote === 'object' && Object.keys(remote).length > 0) {
+        trashed = remote;
+      } else {
+        const local = localStorage.getItem('store-project-trash');
+        if (local) trashed = JSON.parse(local);
+      }
+    }
+  } catch(e) {
+    const local = localStorage.getItem('store-project-trash');
+    if (local) { try { trashed = JSON.parse(local); } catch(ex) { trashed = {}; } }
   }
   renderTrash();
 }
@@ -2214,10 +2236,10 @@ function showSync(color, text) {
 // --- Init on page load ---
 window.addEventListener('DOMContentLoaded', async function() {
   initHearts();
-  loadTrash();
+  await loadTrash();
   await loadFavorites();
 
-  // Her 15 saniyede favorileri otomatik yenile
+  // Her 15 saniyede favorileri ve çöpü otomatik yenile
   setInterval(async function() {
     try {
       const res = await fetch(API_URL);
@@ -2230,6 +2252,19 @@ window.addEventListener('DOMContentLoaded', async function() {
           renderHearts();
           showSync('green', 'Partnerden güncellendi');
           setTimeout(function() { showSync('green', 'Senkronize'); }, 2000);
+        }
+      }
+    } catch(e) {}
+    try {
+      const tres = await fetch(TRASH_API_URL);
+      if (tres.ok) {
+        const tremote = await tres.json();
+        const tremoteStr = JSON.stringify(tremote);
+        const tlocalStr = JSON.stringify(trashed);
+        if (tremoteStr !== tlocalStr && tremote && typeof tremote === 'object') {
+          trashed = tremote;
+          renderTrash();
+          reapplyFilter();
         }
       }
     } catch(e) {}
