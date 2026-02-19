@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>60+ Women's Wear Website References</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px; }
+.title { text-align: center; padding: 40px 0 20px; border-bottom: 2px solid #111; margin-bottom: 32px; }
+.title h1 { font-size: 1.8em; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; color: #111; }
+.title p { color: #888; font-size: 0.85em; margin-top: 8px; }
+
+/* Filter */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; position: sticky; top: 0; background: #fff; padding: 12px 0; z-index: 10; border-bottom: 1px solid #eee; }
+.filter-btn {
+  padding: 6px 18px; border: 1px solid #ddd; background: #fff; cursor: pointer;
+  font-size: 0.72em; letter-spacing: 1.5px; text-transform: uppercase; transition: 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.filter-btn:hover, .filter-btn.active { background: #111; color: #fff; border-color: #111; }
+.count { font-size: 0.75em; color: #888; margin-bottom: 20px; }
+
+/* Cards */
+.site-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.site-card {
+  border: 1px solid #eee; padding: 16px 18px; transition: 0.3s; cursor: pointer;
+  text-decoration: none; color: inherit; display: block; position: relative;
+}
+.site-card:hover { border-color: #111; background: #fafafa; }
+.site-card .brand { font-size: 0.85em; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; color: #111; }
+.site-card .cat { font-size: 0.7em; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.site-card .desc { font-size: 0.78em; color: #666; line-height: 1.5; }
+.site-card .url { font-size: 0.68em; color: #aaa; margin-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.site-card .tag-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+.tag { font-size: 0.6em; padding: 2px 8px; letter-spacing: 1px; text-transform: uppercase; }
+.tag-minimal { background: #f0f0f0; color: #333; }
+.tag-luxury { background: #111; color: #fff; }
+.tag-dtc { background: #e8f4e8; color: #2a7a2a; }
+.tag-shopify { background: #e8f0fd; color: #2a5aa7; }
+.tag-fast { background: #fef3e2; color: #b87a2a; }
+.tag-indie { background: #f5e8f5; color: #7a2a7a; }
+.tag-sustainable { background: #e8f8f0; color: #2a7a5a; }
+.tag-mid { background: #f0ece6; color: #6b5a42; }
+.tag-dark { background: #1a1a1a; color: #c0c0c0; }
+.tag-victorian { background: #2d1f3d; color: #d4b8e8; }
+.tag-avant { background: #333; color: #e0e0e0; }
+
+.note { text-align: center; padding: 40px; color: #888; font-size: 0.85em; border-top: 1px solid #eee; margin-top: 32px; }
+
+@media (max-width: 600px) {
+  .site-grid { grid-template-columns: 1fr; }
+  .filter-bar { gap: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="title">
+  <h1>Women's Wear Reference Sites</h1>
+  <p>85+ websites to study for design, UX, and brand inspiration — click any card to visit</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all')">All</button>
+  <button class="filter-btn" onclick="filterCards('minimal')">Minimal</button>
+  <button class="filter-btn" onclick="filterCards('luxury')">Luxury</button>
+  <button class="filter-btn" onclick="filterCards('dtc')">DTC</button>
+  <button class="filter-btn" onclick="filterCards('shopify')">On Shopify</button>
+  <button class="filter-btn" onclick="filterCards('fast')">Fast Fashion</button>
+  <button class="filter-btn" onclick="filterCards('indie')">Indie</button>
+  <button class="filter-btn" onclick="filterCards('sustainable')">Sustainable</button>
+  <button class="filter-btn" onclick="filterCards('dark')">Dark / Gothic</button>
+  <button class="filter-btn" onclick="filterCards('victorian')">Victorian</button>
+  <button class="filter-btn" onclick="filterCards('avant')">Avant-Garde</button>
+</div>
+
+<div class="count" id="count">Showing 85 sites</div>
+
+<div class="site-grid" id="grid">
+
+<!-- MINIMAL / EDITORIAL -->
+<a href="https://www.zara.com" target="_blank" class="site-card" data-tags="minimal fast">
+  <div class="brand">Zara</div><div class="cat">Fast Fashion — Spain</div>
+  <div class="desc">Ultra-minimal editorial design. Black & white UI, massive photography. Your primary design reference.</div>
+  <div class="url">zara.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://www.cos.com" target="_blank" class="site-card" data-tags="minimal sustainable">
+  <div class="brand">COS</div><div class="cat">Contemporary — Sweden</div>
+  <div class="desc">Clean minimalist design with great UX. Zara's sister brand but with better usability and sustainability focus.</div>
+  <div class="url">cos.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.toteme-studio.com" target="_blank" class="site-card" data-tags="minimal luxury">
+  <div class="brand">Toteme</div><div class="cat">Premium — Sweden</div>
+  <div class="desc">Strong grid system, exemplary minimalist fashion layout. Scandinavian precision with editorial feel.</div>
+  <div class="url">toteme-studio.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.sezane.com" target="_blank" class="site-card" data-tags="minimal dtc sustainable">
+  <div class="brand">Sezane</div><div class="cat">DTC — France</div>
+  <div class="desc">Digital-first French brand. Immersive storytelling, limited drops, incredible community. 90% online sales.</div>
+  <div class="url">sezane.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-dtc">DTC</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.oliveclothing.com" target="_blank" class="site-card" data-tags="minimal indie">
+  <div class="brand">Olive Clothing</div><div class="cat">Independent — UK</div>
+  <div class="desc">Flawlessly immersive minimalist design. Hidden nav, large hero collages, chic and simple.</div>
+  <div class="url">oliveclothing.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://kfrancestudio.com" target="_blank" class="site-card" data-tags="minimal dtc shopify">
+  <div class="brand">K France Studio</div><div class="cat">Contemporary — USA</div>
+  <div class="desc">Clean editorial Shopify store. Minimal color palette, strong typography, curated collections.</div>
+  <div class="url">kfrancestudio.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.calvinklein.com" target="_blank" class="site-card" data-tags="minimal luxury">
+  <div class="brand">Calvin Klein</div><div class="cat">Premium — USA</div>
+  <div class="desc">Bold minimalist aesthetic. Monochromatic scheme, structured layout, timeless appeal.</div>
+  <div class="url">calvinklein.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://kfrancestudio.com" target="_blank" class="site-card" data-tags="minimal">
+  <div class="brand">Khy</div><div class="cat">Contemporary — USA</div>
+  <div class="desc">Kylie Jenner's fashion brand. Sleek minimalistic ecommerce with prominent product drops.</div>
+  <div class="url">khy.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<!-- LUXURY -->
+<a href="https://www.gucci.com" target="_blank" class="site-card" data-tags="luxury">
+  <div class="brand">Gucci</div><div class="cat">Luxury — Italy</div>
+  <div class="desc">Gallery-like editorial layout. Full-width campaign imagery, minimalist color palette, vibrant product shots.</div>
+  <div class="url">gucci.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.dior.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Dior</div><div class="cat">Luxury — France</div>
+  <div class="desc">High-resolution visuals, refined typography, cohesive color palette. Heritage translated into digital.</div>
+  <div class="url">dior.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.bottegaveneta.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Bottega Veneta</div><div class="cat">Luxury — Italy</div>
+  <div class="desc">Clean minimalist layout with visual clarity and ease of use. Muted backgrounds enhance vibrant fashion.</div>
+  <div class="url">bottegaveneta.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.louisvuitton.com" target="_blank" class="site-card" data-tags="luxury">
+  <div class="brand">Louis Vuitton</div><div class="cat">Luxury — France</div>
+  <div class="desc">Heritage meets digital. High-res visuals against minimalist backdrop, exudes elegance.</div>
+  <div class="url">louisvuitton.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.oscardelarenta.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Oscar de la Renta</div><div class="cat">Luxury — USA</div>
+  <div class="desc">Clean sophisticated design with interactive elements. Minimalist aesthetic, focus on products.</div>
+  <div class="url">oscardelarenta.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.stellamccartney.com" target="_blank" class="site-card" data-tags="luxury sustainable">
+  <div class="brand">Stella McCartney</div><div class="cat">Luxury Sustainable — UK</div>
+  <div class="desc">Luxury meets sustainability. Clean design with strong environmental messaging.</div>
+  <div class="url">stellamccartney.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.galialahav.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Galia Lahav</div><div class="cat">Bridal Luxury — Israel</div>
+  <div class="desc">Smooth flowing, elegant design. Sticky navigation, haute couture bridal and evening wear.</div>
+  <div class="url">galialahav.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<!-- FAST FASHION -->
+<a href="https://www.hm.com" target="_blank" class="site-card" data-tags="fast">
+  <div class="brand">H&M</div><div class="cat">Fast Fashion — Sweden</div>
+  <div class="desc">Massive traffic leader. Reviews, ratings, chatbot, wishlist, color variant previews as thumbnails.</div>
+  <div class="url">hm.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://www.asos.com" target="_blank" class="site-card" data-tags="fast">
+  <div class="brand">ASOS</div><div class="cat">Fast Fashion — UK</div>
+  <div class="desc">Best-in-class filtering. Catwalk videos, visual search, model height info, massive brand catalog.</div>
+  <div class="url">asos.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://www.mango.com" target="_blank" class="site-card" data-tags="fast minimal">
+  <div class="brand">Mango</div><div class="cat">Fast Fashion — Spain</div>
+  <div class="desc">Full-screen video homepage, AI styling assistant, shoppable lookbooks, Mediterranean flair.</div>
+  <div class="url">mango.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.uniqlo.com" target="_blank" class="site-card" data-tags="fast minimal">
+  <div class="brand">Uniqlo</div><div class="cat">Basics — Japan</div>
+  <div class="desc">Clean, functional design focused on essentials. Strong product photography and clear navigation.</div>
+  <div class="url">uniqlo.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.massimodutti.com" target="_blank" class="site-card" data-tags="fast minimal luxury">
+  <div class="brand">Massimo Dutti</div><div class="cat">Premium Fast Fashion — Spain</div>
+  <div class="desc">Zara's upscale sibling. Same minimal editorial approach but positioned more premium.</div>
+  <div class="url">massimodutti.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<!-- DTC / SHOPIFY -->
+<a href="https://www.everlane.com" target="_blank" class="site-card" data-tags="dtc sustainable minimal">
+  <div class="brand">Everlane</div><div class="cat">DTC — USA</div>
+  <div class="desc">Radical transparency. Clean minimal design, ethical sourcing, capsule wardrobe approach.</div>
+  <div class="url">everlane.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-sustainable">Sustainable</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.thereformation.com" target="_blank" class="site-card" data-tags="dtc sustainable shopify">
+  <div class="brand">Reformation</div><div class="cat">DTC Sustainable — USA</div>
+  <div class="desc">Fashion-forward + sustainable. $350M+ revenue. Fun, cheeky brand voice with great UX.</div>
+  <div class="url">thereformation.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-sustainable">Sustainable</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.mejuri.com" target="_blank" class="site-card" data-tags="dtc shopify minimal">
+  <div class="brand">Mejuri</div><div class="cat">DTC Jewelry — Canada</div>
+  <div class="desc">DTC cutting out markups. Clean, luxe feel. Fair pricing with high-end brand experience.</div>
+  <div class="url">mejuri.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.goodamerican.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Good American</div><div class="cat">DTC Inclusive — USA</div>
+  <div class="desc">Body-positive, sizes 00-32. Known for 'Always Fits' jeans. Inclusive imagery and strong community.</div>
+  <div class="url">goodamerican.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.rebeccaminkoff.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Rebecca Minkoff</div><div class="cat">Designer — USA</div>
+  <div class="desc">Excellent Shopify fashion store. Wide product range with sophisticated design.</div>
+  <div class="url">rebeccaminkoff.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.kotn.com" target="_blank" class="site-card" data-tags="dtc shopify sustainable minimal">
+  <div class="brand">Kotn</div><div class="cat">DTC Basics — Canada</div>
+  <div class="desc">Longevity over trends. Egyptian cotton essentials. Clean, purposeful design for millennials and Gen Z.</div>
+  <div class="url">kotn.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.pangaia.com" target="_blank" class="site-card" data-tags="dtc shopify sustainable">
+  <div class="brand">Pangaia</div><div class="cat">Materials Science — UK</div>
+  <div class="desc">Eco-friendly innovation meets fashion. Vibrant product photography, strong sustainability messaging.</div>
+  <div class="url">pangaia.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://wearpepper.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Pepper</div><div class="cat">DTC Intimates — USA</div>
+  <div class="desc">Masterclass in niche DTC clarity. Every element tailored to its audience. Transparent sizing.</div>
+  <div class="url">wearpepper.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.motelrocks.com" target="_blank" class="site-card" data-tags="dtc shopify fast">
+  <div class="brand">Motel Rocks</div><div class="cat">Gen Z Fashion — UK</div>
+  <div class="desc">Feels like a social feed. Colorful, fast, constantly changing. UGC carousels and influencer picks.</div>
+  <div class="url">motelrocks.com</div>
+  <div class="tag-row"><span class="tag tag-shopify">Shopify</span><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://www.misslola.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Miss Lola</div><div class="cat">Shoes & Fashion — USA</div>
+  <div class="desc">Tightly curated collections tied to seasonal moments. Time-sensitive drops and trend tracking.</div>
+  <div class="url">misslola.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.mingalondon.com" target="_blank" class="site-card" data-tags="indie shopify">
+  <div class="brand">Minga London</div><div class="cat">Alt Fashion — UK</div>
+  <div class="desc">Fashion as cultural rebellion. Gothic styles, defies mainstream. Strong brand identity.</div>
+  <div class="url">mingalondon.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<!-- INDIE / EMERGING -->
+<a href="https://www.garmentory.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">Garmentory</div><div class="cat">Marketplace — USA</div>
+  <div class="desc">Curated marketplace of 3,000+ emerging brands and 1,000 boutiques. Discover unique designers.</div>
+  <div class="url">garmentory.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.wolfandbadger.com" target="_blank" class="site-card" data-tags="indie sustainable">
+  <div class="brand">Wolf & Badger</div><div class="cat">Marketplace — UK</div>
+  <div class="desc">Hand-picked from world's best independent brands. Ethical and unique designers.</div>
+  <div class="url">wolfandbadger.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.silkfred.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">SilkFred</div><div class="cat">Marketplace — UK</div>
+  <div class="desc">500+ independent boutiques. Affordable, unique styles you won't find elsewhere.</div>
+  <div class="url">silkfred.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.busbyandfox.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">Busby & Fox</div><div class="cat">Independent — UK</div>
+  <div class="desc">Stylish yet comfortable pieces. Clean design with a warm, personal brand voice.</div>
+  <div class="url">busbyandfox.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://pinklily.com" target="_blank" class="site-card" data-tags="indie shopify">
+  <div class="brand">Pink Lily</div><div class="cat">Boutique — USA</div>
+  <div class="desc">Trendy, affordable boutique fashion. Fun and accessible. Strong social media presence.</div>
+  <div class="url">pinklily.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.soiparis.com" target="_blank" class="site-card" data-tags="indie minimal sustainable">
+  <div class="brand">Soi Paris</div><div class="cat">Indie — France</div>
+  <div class="desc">Sophisticated design with urgency-driven sections. B Corp certified. Ethical business practices.</div>
+  <div class="url">soiparis.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span><span class="tag tag-minimal">Minimal</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://thesleeper.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">The Sleeper</div><div class="cat">Loungewear — Ukraine</div>
+  <div class="desc">Authentic, effortless design. Collage-like images with accent colors. Unique brand identity.</div>
+  <div class="url">thesleeper.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<!-- PREMIUM / CONTEMPORARY -->
+<a href="https://www.nordstrom.com" target="_blank" class="site-card" data-tags="luxury">
+  <div class="brand">Nordstrom</div><div class="cat">Department Store — USA</div>
+  <div class="desc">Multi-brand destination for premium women's fashion. Excellent filtering and search UX.</div>
+  <div class="url">nordstrom.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.aritzia.com" target="_blank" class="site-card" data-tags="dtc minimal">
+  <div class="brand">Aritzia</div><div class="cat">Contemporary — Canada</div>
+  <div class="desc">Standout performer with successful expansion. Clean design with strong brand curation.</div>
+  <div class="url">aritzia.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.revolve.com" target="_blank" class="site-card" data-tags="luxury">
+  <div class="brand">Revolve</div><div class="cat">Curated Premium — USA</div>
+  <div class="desc">Sophistication and luxury. Curated collections, strong influencer marketing, great product pages.</div>
+  <div class="url">revolve.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.anthropologie.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">Anthropologie</div><div class="cat">Lifestyle — USA</div>
+  <div class="desc">Playful fashion. Embroidered blouses, flowing maxis. Unique and eclectic styling.</div>
+  <div class="url">anthropologie.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.freepeople.com" target="_blank" class="site-card" data-tags="indie">
+  <div class="brand">Free People</div><div class="cat">Bohemian — USA</div>
+  <div class="desc">Bohemian, festival-inspired womenswear. Strong niche with yoga-adjacent lifestyle.</div>
+  <div class="url">freepeople.com</div>
+  <div class="tag-row"><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.madewell.com" target="_blank" class="site-card" data-tags="dtc">
+  <div class="brand">Madewell</div><div class="cat">Denim Authority — USA</div>
+  <div class="desc">Cemented as the denim authority. Clean product pages with strong fabric and fit details.</div>
+  <div class="url">madewell.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span></div>
+</a>
+
+<a href="https://www.athleta.com" target="_blank" class="site-card" data-tags="dtc sustainable">
+  <div class="brand">Athleta</div><div class="cat">Activewear — USA</div>
+  <div class="desc">Empowering women through movement. Vibrant imagery showcasing diverse women in action.</div>
+  <div class="url">athleta.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.abercrombie.com" target="_blank" class="site-card" data-tags="fast">
+  <div class="brand">Abercrombie & Fitch</div><div class="cat">Contemporary — USA</div>
+  <div class="desc">Remarkable brand turnaround. 12 consecutive quarters of growth. Clean, modern redesign.</div>
+  <div class="url">abercrombie.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://us.princesspolly.com" target="_blank" class="site-card" data-tags="fast shopify">
+  <div class="brand">Princess Polly</div><div class="cat">Gen Z Fashion — Australia</div>
+  <div class="desc">Vibrant, trend-driven Shopify store. Strong TikTok presence and rapid product drops.</div>
+  <div class="url">princesspolly.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.fashionnova.com" target="_blank" class="site-card" data-tags="fast">
+  <div class="brand">Fashion Nova</div><div class="cat">Social-First Fashion — USA</div>
+  <div class="desc">Built on social media. Thousands of dresses, rapid drops, $20-80 price range. Body-con focused.</div>
+  <div class="url">fashionnova.com</div>
+  <div class="tag-row"><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://www.net-a-porter.com" target="_blank" class="site-card" data-tags="luxury">
+  <div class="brand">Net-a-Porter</div><div class="cat">Luxury Multi-Brand — UK</div>
+  <div class="desc">The gold standard of luxury fashion ecommerce. Editorial content + shopping seamlessly blended.</div>
+  <div class="url">net-a-porter.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.matchesfashion.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Matches Fashion</div><div class="cat">Luxury Multi-Brand — UK</div>
+  <div class="desc">Curated luxury with editorial storytelling. Clean navigation and strong brand curation.</div>
+  <div class="url">matchesfashion.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+
+<a href="https://www.therow.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">The Row</div><div class="cat">Luxury — USA</div>
+  <div class="desc">Extreme minimalism. Olsen twins' brand. Barely any text, all about the garment photography.</div>
+  <div class="url">therow.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.acnestudios.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Acne Studios</div><div class="cat">Premium — Sweden</div>
+  <div class="desc">Art meets fashion. Minimal Scandinavian design with strong creative direction.</div>
+  <div class="url">acnestudios.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.filippa-k.com" target="_blank" class="site-card" data-tags="minimal sustainable">
+  <div class="brand">Filippa K</div><div class="cat">Sustainable Premium — Sweden</div>
+  <div class="desc">Timeless wardrobe essentials. Clean Scandinavian design. Strong sustainability commitment.</div>
+  <div class="url">filippa-k.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.arket.com" target="_blank" class="site-card" data-tags="minimal sustainable">
+  <div class="brand">Arket</div><div class="cat">Modern Market — Sweden</div>
+  <div class="desc">H&M's premium minimal brand. Essential wardrobe pieces with sustainability focus.</div>
+  <div class="url">arket.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.otherstories.com" target="_blank" class="site-card" data-tags="minimal">
+  <div class="brand">& Other Stories</div><div class="cat">Contemporary — Sweden</div>
+  <div class="desc">H&M group's creative fashion brand. Atelier-designed collections with editorial presentation.</div>
+  <div class="url">otherstories.com</div>
+  <div class="tag-row"><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.rouje.com" target="_blank" class="site-card" data-tags="dtc minimal indie">
+  <div class="brand">Rouje</div><div class="cat">Parisian DTC — France</div>
+  <div class="desc">Jeanne Damas' brand. Effortless Parisian style. Beautiful editorial photography.</div>
+  <div class="url">rouje.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-minimal">Minimal</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.lacauseofficial.com" target="_blank" class="site-card" data-tags="dtc sustainable shopify">
+  <div class="brand">La Cause</div><div class="cat">DTC Sustainable — USA</div>
+  <div class="desc">Sustainable basics with California vibes. Clean Shopify store with warm, natural photography.</div>
+  <div class="url">lacauseofficial.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-sustainable">Sustainable</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.nanushka.com" target="_blank" class="site-card" data-tags="luxury minimal">
+  <div class="brand">Nanushka</div><div class="cat">Premium — Hungary</div>
+  <div class="desc">Budapest-based luxury. Vegan leather pioneer. Clean editorial design with strong identity.</div>
+  <div class="url">nanushka.com</div>
+  <div class="tag-row"><span class="tag tag-luxury">Luxury</span><span class="tag tag-minimal">Minimal</span></div>
+</a>
+
+<a href="https://www.ganni.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Ganni</div><div class="cat">Contemporary — Denmark</div>
+  <div class="desc">Scandinavian cool meets responsible fashion. Fun, colorful, with playful UX on Shopify.</div>
+  <div class="url">ganni.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.skims.com" target="_blank" class="site-card" data-tags="dtc shopify">
+  <div class="brand">Skims</div><div class="cat">DTC Shapewear — USA</div>
+  <div class="desc">Kim K's shapewear/clothing brand. Clean, inclusive imagery. Massive Shopify success story.</div>
+  <div class="url">skims.com</div>
+  <div class="tag-row"><span class="tag tag-dtc">DTC</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.lauracanada.com" target="_blank" class="site-card" data-tags="shopify">
+  <div class="brand">Laura Canada</div><div class="cat">Women's Wear — Canada</div>
+  <div class="desc">Wide range of sizes and styles. Practical and stylish options for every occasion on Shopify.</div>
+  <div class="url">lauracanada.com</div>
+  <div class="tag-row"><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+</div>
+
+<!-- DARK / GOTHIC / VICTORIAN -->
+<a href="https://us.killstar.com" target="_blank" class="site-card" data-tags="dark indie shopify">
+  <div class="brand">Killstar</div><div class="cat">Gothic & Alternative — UK</div>
+  <div class="desc">One of the largest gothic/alt fashion retailers. Occult aesthetics, dark lifestyle brand. Huge range of dresses, accessories, homeware.</div>
+  <div class="url">killstar.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span><span class="tag tag-shopify">Shopify</span></div>
+</a>
+
+<a href="https://www.disturbia.us" target="_blank" class="site-card" data-tags="dark indie">
+  <div class="brand">Disturbia</div><div class="cat">Dark Romantic — UK</div>
+  <div class="desc">Since 2003. Gothic, darkly romantic fashion and homewares. Strong brand identity with "disturb the suburbs" ethos.</div>
+  <div class="url">disturbia.us</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.dollskill.com/collections/mercy-gothic-clothing" target="_blank" class="site-card" data-tags="dark fast">
+  <div class="brand">Dolls Kill</div><div class="cat">Alt Fashion — USA</div>
+  <div class="desc">Bold gothic and dark romantic collections. Mercy line covers gothic from elegant to edgy. Massive catalog, fast drops.</div>
+  <div class="url">dollskill.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-fast">Fast Fashion</span></div>
+</a>
+
+<a href="https://lafemmeennoir.net" target="_blank" class="site-card" data-tags="dark victorian indie">
+  <div class="brand">La Femme en Noir</div><div class="cat">Gothic Couture — USA</div>
+  <div class="desc">Premiere gothic style house. Victorian era to 1950s film vamp aesthetics. Ethically made, sizes XS-4X. High-quality dark fashion.</div>
+  <div class="url">lafemmeennoir.net</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.midnighthour.com" target="_blank" class="site-card" data-tags="dark indie">
+  <div class="brand">Midnight Hour</div><div class="cat">Dark Luxe — USA</div>
+  <div class="desc">LA-based dark luxe clothing. Ships worldwide. Clean, modern take on gothic fashion with premium feel.</div>
+  <div class="url">midnighthour.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://scarletdarkness.com" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">Scarlet Darkness</div><div class="cat">Renaissance & Gothic — Global</div>
+  <div class="desc">Victorian, Renaissance, Goth, and Punk clothing. Corsets, period-inspired pieces. Accessible prices with global shipping.</div>
+  <div class="url">scarletdarkness.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://punkdesign.shop" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">Punk Design</div><div class="cat">Gothic & Punk — Global</div>
+  <div class="desc">Punk Rave, Eva Lady collections. Gothic grunge, victorian darkness, punk rock fusion. Plus-size inclusive.</div>
+  <div class="url">punkdesign.shop</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://www.darkincloset.com" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">DarkinCloset</div><div class="cat">Gothic & Victorian — Global</div>
+  <div class="desc">Multi-brand gothic store. Carries Pentagramme, Punk Rave, Devil Fashion, Dark in Love. Victorian and Lolita specialties.</div>
+  <div class="url">darkincloset.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://draculaclothing.com" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">Dracula Clothing</div><div class="cat">Gothic Corsets — Europe</div>
+  <div class="desc">Steel-boned gothic and Victorian corsets. Specialized in period-accurate gothic pieces. Free worldwide shipping.</div>
+  <div class="url">draculaclothing.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://blackwoodcastle.com" target="_blank" class="site-card" data-tags="dark victorian sustainable">
+  <div class="brand">Blackwood Castle</div><div class="cat">Ethical Gothic — Global</div>
+  <div class="desc">Ethically made gothic dresses and accessories. Small batches, lasting quality, romantic Victorian silhouettes.</div>
+  <div class="url">blackwoodcastle.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span><span class="tag tag-sustainable">Sustainable</span></div>
+</a>
+
+<a href="https://www.thedarkstore.com" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">The Dark Store</div><div class="cat">Gothic Boutique — France</div>
+  <div class="desc">Exclusive underground gothic boutique. Dedicated Victorian Gothic section. Velvet jackets, lace blouses, brocade vests.</div>
+  <div class="url">thedarkstore.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://www.the-black-angel.com" target="_blank" class="site-card" data-tags="dark indie">
+  <div class="brand">The Black Angel</div><div class="cat">Gothic Heritage — Europe</div>
+  <div class="desc">One of Europe's oldest gothic shops (since 1999). Modern goth to old-school deathrock. Curated dark and occult clothing.</div>
+  <div class="url">the-black-angel.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://blackmilkclothing.com/collections/goth-clothing" target="_blank" class="site-card" data-tags="dark dtc">
+  <div class="brand">BlackMilk Clothing</div><div class="cat">Goth & Alt Fashion — Australia</div>
+  <div class="desc">Iconic leggings and bodysuits brand with dedicated goth collection. Pastel goth to dark goth. Strong community.</div>
+  <div class="url">blackmilkclothing.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-dtc">DTC</span></div>
+</a>
+
+<a href="https://goodgoth.com" target="_blank" class="site-card" data-tags="dark indie">
+  <div class="brand">GoodGoth</div><div class="cat">Gothic Plus Size — USA</div>
+  <div class="desc">Family-owned since 1996. Affordable gothic and alternative clothing with plus-size range. Victorian velvet and lace pieces.</div>
+  <div class="url">goodgoth.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://forestinkclothing.com" target="_blank" class="site-card" data-tags="dark indie">
+  <div class="brand">Forest Ink</div><div class="cat">Goth & Grunge — USA</div>
+  <div class="desc">Exclusive goth and grunge apparel. One-of-a-kind pieces plus gothic, witchy, and alternative accessories and home goods.</div>
+  <div class="url">forestinkclothing.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<a href="https://www.unique-vintage.com/collections/gothic-glam" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">Unique Vintage</div><div class="cat">Gothic Glam — USA</div>
+  <div class="desc">Retro charm meets gothic glamour. Vintage-inspired gothic dresses. "Timeless sophistication" in black.</div>
+  <div class="url">unique-vintage.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://fantasmagoria.shop" target="_blank" class="site-card" data-tags="dark victorian">
+  <div class="brand">Fantasmagoria</div><div class="cat">Dark Fashion Marketplace — Europe</div>
+  <div class="desc">Multi-brand dark fashion store. Carries Dark in Love, Punk Rave, and more. Gothic, steampunk, and Victorian pieces.</div>
+  <div class="url">fantasmagoria.shop</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<!-- DARK AVANT-GARDE / LUXURY DARK -->
+<a href="https://www.rickowens.eu" target="_blank" class="site-card" data-tags="dark avant luxury">
+  <div class="brand">Rick Owens</div><div class="cat">Dark Avant-Garde — Italy/USA</div>
+  <div class="desc">Fashion's most famed outsider. Reductionist gothic aesthetic. Fluid draping, experimental textures, architectural silhouettes.</div>
+  <div class="url">rickowens.eu</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-avant">Avant-Garde</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.anndemeulemeester.com" target="_blank" class="site-card" data-tags="dark avant luxury">
+  <div class="brand">Ann Demeulemeester</div><div class="cat">Dark Romantic Luxury — Belgium</div>
+  <div class="desc">Iconic dark avant-garde. Romantic yet edgy, flowing fabrics, intricate layering, poetic darkness. Raw edges, delicate embroidery.</div>
+  <div class="url">anndemeulemeester.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-avant">Avant-Garde</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.alexandermcqueen.com" target="_blank" class="site-card" data-tags="dark luxury">
+  <div class="brand">Alexander McQueen</div><div class="cat">Gothic Luxury — UK</div>
+  <div class="desc">Theatrical edge, sculptural finesse. Structured tailoring with gothic romance. Emotion transformed into silhouette.</div>
+  <div class="url">alexandermcqueen.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.ssense.com" target="_blank" class="site-card" data-tags="dark avant luxury minimal">
+  <div class="brand">SSENSE</div><div class="cat">Luxury Platform — Canada</div>
+  <div class="desc">Ultra-minimal interface. Carries Rick Owens, Ann Demeulemeester, and all dark avant-garde designers. Best dark fashion curation online.</div>
+  <div class="url">ssense.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-avant">Avant-Garde</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://www.vaniitas.com" target="_blank" class="site-card" data-tags="dark avant victorian">
+  <div class="brand">Vaniitas</div><div class="cat">Vintage Dark Design — Netherlands</div>
+  <div class="desc">Vintage Belgian and Japanese dark designers. Ann Demeulemeester, Haider Ackermann, Comme des Garcons. 90s-2010s archive pieces.</div>
+  <div class="url">vaniitas.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-avant">Avant-Garde</span><span class="tag tag-victorian">Victorian</span></div>
+</a>
+
+<a href="https://antidotestyle.com" target="_blank" class="site-card" data-tags="dark avant luxury">
+  <div class="brand">Antidote Fashion</div><div class="cat">Dark Designer Retail — USA</div>
+  <div class="desc">Curates Rick Owens, dark designer collections. Clean e-commerce with a focus on avant-garde and dark luxury fashion.</div>
+  <div class="url">antidotestyle.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-avant">Avant-Garde</span><span class="tag tag-luxury">Luxury</span></div>
+</a>
+
+<a href="https://joanieclothing.com/us/the-edit/gothic-romance.html" target="_blank" class="site-card" data-tags="dark victorian indie">
+  <div class="brand">Joanie Clothing</div><div class="cat">Gothic Romance — UK</div>
+  <div class="desc">Vintage-inspired Victoriana pieces. Antique floral prints, vintage lace, black velvet. Romantic goth staples at accessible prices.</div>
+  <div class="url">joanieclothing.com</div>
+  <div class="tag-row"><span class="tag tag-dark">Dark</span><span class="tag tag-victorian">Victorian</span><span class="tag tag-indie">Indie</span></div>
+</a>
+
+<div class="note">
+  Click any card to open the website in a new tab. Use the filter buttons to narrow by category.<br>
+  <strong>Tip:</strong> Study Zara, COS, Toteme, and Sezane for design reference. For your dark/gothic niche, study Killstar, Disturbia, La Femme en Noir, and Rick Owens most closely.
+</div>
+
+</div>
+
+<script>
+function filterCards(tag) {
+  const cards = document.querySelectorAll('.site-card');
+  const btns = document.querySelectorAll('.filter-btn');
+  let count = 0;
+  btns.forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  cards.forEach(card => {
+    if (tag === 'all' || card.dataset.tags.includes(tag)) {
+      card.style.display = 'block';
+      count++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  document.getElementById('count').textContent = `Showing ${count} sites`;
+}
+</script>
+</body>
+</html>
