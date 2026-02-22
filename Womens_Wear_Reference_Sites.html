@@ -34,7 +34,14 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
 .site-card .cat { font-size: 0.7em; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
 .site-card .desc { font-size: 0.78em; color: #666; line-height: 1.5; }
 .site-card .url { font-size: 0.68em; color: #aaa; margin-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.site-card .tag-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; padding-left: 30px; }
+.site-card .tag-row { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+.site-card .tag-row .trash-btn-inline {
+  cursor: pointer; font-size: 0.75em; line-height: 1; padding: 2px 6px; border: 1px solid #ddd;
+  background: rgba(255,255,255,0.95); color: #bbb; transition: 0.2s; user-select: none;
+  border-radius: 3px; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; flex-shrink: 0;
+}
+.site-card .tag-row .trash-btn-inline:hover { color: #e74c3c; border-color: #e74c3c; background: #fff5f5; }
+.site-card .tag-row .trash-btn-inline.active { color: #999; border-color: #ccc; background: #f5f5f5; }
 .tag { font-size: 0.6em; padding: 2px 8px; letter-spacing: 1px; text-transform: uppercase; }
 .tag-minimal { background: #f0f0f0; color: #333; }
 .tag-luxury { background: #111; color: #fff; }
@@ -76,22 +83,14 @@ body { font-family: 'Inter', sans-serif; color: #333; background: #fff; }
 .site-card.is-fav .fav-note-wrap { display: block; }
 .fav-note {
   width: 100%; padding: 6px 8px; border: 1px solid #e0d0d0; background: #fff9f9;
-  font-size: 0.72em; font-family: 'Inter', sans-serif; color: #555; resize: none;
+  font-size: 0.72em; font-family: 'Inter', sans-serif; color: #555; resize: vertical;
   border-radius: 3px; outline: none; transition: border-color 0.2s; line-height: 1.4;
-  min-height: 28px; max-height: 80px;
+  min-height: 28px; overflow-y: hidden; box-sizing: border-box;
 }
 .fav-note:focus { border-color: #e74c3c; background: #fff; }
 .fav-note::placeholder { color: #ccc; font-style: italic; }
 .fav-note-saved { font-size: 0.6em; color: #2ecc71; margin-left: 4px; display: none; }
 /* Trash/Bin system */
-.trash-btn {
-  position: absolute; bottom: 8px; left: 10px; cursor: pointer; z-index: 5;
-  font-size: 0.75em; line-height: 1; padding: 4px 6px; border: 1px solid #ddd; background: rgba(255,255,255,0.95);
-  color: #bbb; transition: 0.2s; user-select: none; border-radius: 3px;
-  font-family: 'Inter', sans-serif; letter-spacing: 0.5px;
-}
-.trash-btn:hover { color: #e74c3c; border-color: #e74c3c; background: #fff5f5; }
-.trash-btn.active { color: #999; border-color: #ccc; background: #f5f5f5; }
 .site-card.is-trashed { opacity: 0.4; border-color: #ddd; background: #f9f9f9; }
 .filter-btn.trash-filter { border-color: #999; color: #999; }
 .filter-btn.trash-filter:hover, .filter-btn.trash-filter.active { background: #666; color: #fff; border-color: #666; }
@@ -1948,6 +1947,9 @@ function initHearts() {
     let noteTimer = null;
     noteArea.oninput = function(e) {
       e.stopPropagation();
+      // Auto-grow textarea
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
       if (favorites[brand]) {
         if (typeof favorites[brand] === 'object') {
           favorites[brand].note = this.value;
@@ -1965,9 +1967,10 @@ function initHearts() {
     noteWrap.appendChild(savedLabel);
     card.appendChild(noteWrap);
 
-    // Add trash button (bottom-left)
+    // Add trash button inside tag-row
+    const tagRow = card.querySelector('.tag-row');
     const trashBtn = document.createElement('button');
-    trashBtn.className = 'trash-btn';
+    trashBtn.className = 'trash-btn-inline';
     trashBtn.innerHTML = '&#128465;';
     trashBtn.title = 'Çöpe at';
     trashBtn.onclick = function(e) {
@@ -1975,7 +1978,11 @@ function initHearts() {
       e.stopPropagation();
       toggleTrash(brand);
     };
-    card.appendChild(trashBtn);
+    if (tagRow) {
+      tagRow.insertBefore(trashBtn, tagRow.firstChild);
+    } else {
+      card.appendChild(trashBtn);
+    }
   });
 }
 
@@ -1984,7 +1991,12 @@ function toggleFav(brand) {
   if (favorites[brand]) {
     delete favorites[brand];
   } else {
-    favorites[brand] = { ts: Date.now(), note: '' };
+    // Restore note from trash if it exists
+    var restoredNote = '';
+    if (trashed[brand] && typeof trashed[brand] === 'object' && trashed[brand].note) {
+      restoredNote = trashed[brand].note;
+    }
+    favorites[brand] = { ts: Date.now(), note: restoredNote };
   }
   renderHearts();
   renderTrash();
@@ -1996,7 +2008,12 @@ function toggleTrash(brand) {
   if (trashed[brand]) {
     delete trashed[brand];
   } else {
-    trashed[brand] = Date.now();
+    // Save note before trashing so it can be restored later
+    var savedNote = '';
+    if (favorites[brand] && typeof favorites[brand] === 'object') {
+      savedNote = favorites[brand].note || '';
+    }
+    trashed[brand] = { ts: Date.now(), note: savedNote };
     // If also favorited, remove from favorites
     if (favorites[brand]) {
       delete favorites[brand];
@@ -2027,6 +2044,9 @@ function renderHearts() {
         if (noteArea !== document.activeElement) {
           noteArea.value = noteVal;
         }
+        // Auto-grow to fit content
+        noteArea.style.height = 'auto';
+        noteArea.style.height = noteArea.scrollHeight + 'px';
       }
     } else {
       btn.classList.remove('active');
@@ -2050,7 +2070,7 @@ function renderHearts() {
 function renderTrash() {
   document.querySelectorAll('.site-card').forEach(card => {
     const brand = card.dataset.brand;
-    const trashBtn = card.querySelector('.trash-btn');
+    const trashBtn = card.querySelector('.trash-btn-inline');
     if (trashed[brand]) {
       card.classList.add('is-trashed');
       if (trashBtn) {
